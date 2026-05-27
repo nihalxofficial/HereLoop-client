@@ -10,6 +10,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - React Icons
 - Gravity Icons
 - Lucide React
+- Better Auth
+- MongoDB
+- MongoDB Atlas
 
 First, run the development server:
 

@@ -49,7 +49,7 @@ export default function Navbar() {
           {/* Buttons */}
           <div className="flex items-center gap-1">
             <Link
-              href="/signin"
+              href="/auth/login"
               className="rounded-lg px-3 py-1.5 text-sm font-medium text-violet-400 transition hover:bg-white/5 hover:text-violet-300"
             >
               Sign In
@@ -59,7 +59,7 @@ export default function Navbar() {
               size="sm"
               className="bg-white px-4 font-medium text-black hover:bg-gray-100"
             >
-              Get Started
+              <Link href={"/auth/signup"}>Get Started</Link>
             </Button>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function Navbar() {
 
             <div className="mt-2 flex flex-col gap-2">
               <Link
-                href="/signin"
+                href="/auth/login"
                 className="rounded-lg border border-white/10 px-3 py-2.5 text-center text-violet-400 transition hover:bg-white/5"
                 onClick={() => setIsOpen(false)}
               >
@@ -101,7 +101,7 @@ export default function Navbar() {
                 className="w-full bg-white font-medium text-black"
                 onClick={() => setIsOpen(false)}
               >
-                Get Started
+                <Link href={"/auth/signup"}>Get Started</Link>
               </Button>
             </div>
           </div>
