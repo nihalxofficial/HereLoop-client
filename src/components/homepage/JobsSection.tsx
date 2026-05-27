@@ -47,7 +47,7 @@ export default function JobsSection() {
           {jobs.map((job, index) => (
             <div
               key={index}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-violet-500/50 hover:bg-white/10 hover:scale-[1.02]"
+              className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6  transition-all duration-300 hover:border-violet-500/50 hover:bg-white/10 hover:scale-[1.02]"
             >
               {/* Title */}
               <h3 className="text-xl font-semibold text-white">

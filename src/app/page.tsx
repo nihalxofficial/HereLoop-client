@@ -1,3 +1,4 @@
+import FeatureJobsSection from "@/components/homepage/Featured";
 import Hero from "@/components/homepage/Hero";
 import JobsSection from "@/components/homepage/JobsSection";
 // import Stats from "@/components/homepage/Stats";
@@ -8,6 +9,7 @@ export default function Home() {
     <div>
       <Hero/>
       <JobsSection/>
+      <FeatureJobsSection/>
       {/* <Stats/> */}
     </div>
   );

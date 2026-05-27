@@ -53,7 +53,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full border-t border-white/10 bg-[#050816] text-white mt-20">
+    <footer className="w-full border-t border-white/10 bg-[#050816] text-white">
       {/* Main Footer Content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         

@@ -133,7 +133,7 @@ export default function Hero() {
 
         {/* Center Text Over Globe */}
         <div className="relative mt-20">
-          <div className="absolute left-1/2 top-1/2 z-30 w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 px-4 text-center">
+          <div className="absolute left-1/2 mt-35 top-1/2 z-30 w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 px-4 text-center">
             <h2 className="text-2xl font-semibold leading-tight text-white md:text-4xl">
               Assisting over 15,000 job seekers
               <br />
@@ -147,7 +147,7 @@ export default function Hero() {
           {stats.map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-2xl"
+              className="rounded-2xl border border-white/10 black/40 p-5 backdrop-blur-2xl"
             >
               <div className="mb-10 text-gray-400">{item.icon}</div>
               <h3 className="text-3xl font-semibold">{item.value}</h3>
