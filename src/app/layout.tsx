@@ -4,8 +4,9 @@ import { Providers } from "./providers";
 
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
-const josfin = Josefin_Sans({
+const josefin = Josefin_Sans({
   subsets: ["latin"],
 });
 
@@ -17,10 +18,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body data-theme="dark" className="dark bg-background text-foreground">
+      <body data-theme="dark" className={` ${josefin.className} dark bg-background text-foreground`}>
         <Providers>
           <Navbar/>
-          {children}</Providers>
+          {children}
+          <Footer/>
+          </Providers>
       </body>
     </html>
   );

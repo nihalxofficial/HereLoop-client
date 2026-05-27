@@ -19,13 +19,13 @@ export default function Navbar() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 to-violet-600 shadow-lg shadow-violet-500/30">
-            <span className="text-lg font-bold">P</span>
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-br from-fuchsia-500 to-violet-600 shadow-lg shadow-violet-500/30">
+            <span className="text-lg font-bold">HL</span>
           </div>
 
           <div className="leading-tight">
-            <h1 className="text-sm font-semibold">Programming</h1>
-            <p className="text-sm text-gray-300">Hero</p>
+            <h1 className="text-sm font-semibold">HireLoop</h1>
+            <p className="text-sm text-gray-300">Find Carrier Opportunities</p>
           </div>
         </Link>
 
