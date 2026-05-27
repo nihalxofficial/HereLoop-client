@@ -1,3 +1,4 @@
+import CTASection from "@/components/homepage/Cta";
 import FeatureJobsSection from "@/components/homepage/Featured";
 import Hero from "@/components/homepage/Hero";
 import JobsSection from "@/components/homepage/JobsSection";
@@ -12,6 +13,7 @@ export default function Home() {
       <JobsSection/>
       <FeatureJobsSection/>
       <PricingSection/>
+      <CTASection/>
       {/* <Stats/> */}
     </div>
   );
