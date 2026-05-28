@@ -27,11 +27,15 @@ import { FaGithub } from "react-icons/fa";
 import loginBg from "@/assets/login.png";
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,6 +46,13 @@ export default function LoginPage() {
       email: userData.email as string,
       password: userData.password as string,
     });
+    if(data){
+      toast.success("Login Successful 🎉")
+      router.push("/")
+    }
+    if(error){
+      toast.error(error.message)
+    }
   };
 
   const handleGoogleLogin = () => {

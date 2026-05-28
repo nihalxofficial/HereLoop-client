@@ -31,6 +31,8 @@ import signupBg from "@/assets/signup.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,6 +40,8 @@ export default function SignupPage() {
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
+  
+  const router = useRouter();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,12 +54,14 @@ export default function SignupPage() {
       password: userData.password as string,
       image: userData.image as string,
     });
-    console.log(data, error);
-    if(data){
-      alert("SignUp successful")
+    if(data) {
+      toast.success("SignUp Successful 🎉");
+      router.push("/");
+    }
+    if(error) {
+      toast.error(error.message);
     }
   };
-
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white py-20">

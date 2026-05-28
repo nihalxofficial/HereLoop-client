@@ -7,6 +7,7 @@ import { LayoutDashboard, Menu, Settings, X, LogOut, ChevronDown } from "lucide-
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
   { name: "Browse Jobs", href: "/jobs" },
@@ -21,6 +22,8 @@ export default function Navbar() {
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
 
+  const router = useRouter();
+
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -28,6 +31,7 @@ export default function Navbar() {
   const handleSignOut = async () => {
     await authClient.signOut();
     setIsDropdownOpen(false);
+    router.push("/");
   };
 
   // Close dropdown when clicking outside
