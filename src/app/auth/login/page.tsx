@@ -3,7 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Button, TextField, Label, FieldError, Input, InputGroup } from "@heroui/react";
+import {
+  Button,
+  TextField,
+  Label,
+  FieldError,
+  Input,
+  InputGroup,
+} from "@heroui/react";
 import {
   Mail,
   Lock,
@@ -19,6 +26,7 @@ import { FaGithub } from "react-icons/fa";
 
 import loginBg from "@/assets/login.png";
 import { FcGoogle } from "react-icons/fc";
+import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,8 +36,12 @@ export default function LoginPage() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    const userData = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signIn.email({
+      email: userData.email as string,
+      password: userData.password as string,
+    });
   };
 
   const handleGoogleLogin = () => {
@@ -51,10 +63,8 @@ export default function LoginPage() {
 
       <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-center min-h-[80vh]">
-          
           {/* Two Column Layout - No Gap */}
           <div className="grid grid-cols-1 lg:grid-cols-2 w-full max-w-6xl gap-0">
-            
             {/* Left Side - Welcome Container with Background Image */}
             <div className="relative rounded-l-2xl overflow-hidden min-h-150">
               {/* Background Image */}
@@ -67,10 +77,10 @@ export default function LoginPage() {
                   priority
                 />
               </div>
-              
+
               {/* Dark Overlay for Text Readability */}
               <div className="absolute inset-0 bg-linear-to-br from-[#050816]/90 to-[#050816]/70" />
-              
+
               {/* Purple Glow Effect */}
               <div className="absolute inset-0 bg-linear-to-t from-violet-600/30 to-transparent pointer-events-none" />
 
@@ -80,7 +90,9 @@ export default function LoginPage() {
                 <div className="mb-8">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-4">
                     <Rocket size={12} className="text-violet-400" />
-                    <span className="text-[10px] uppercase tracking-wider">Welcome Back!</span>
+                    <span className="text-[10px] uppercase tracking-wider">
+                      Welcome Back!
+                    </span>
                   </div>
                   <h3 className="text-2xl font-bold leading-tight mb-3">
                     Ready to continue your
@@ -90,8 +102,8 @@ export default function LoginPage() {
                     </span>
                   </h3>
                   <p className="text-sm text-gray-300 leading-relaxed">
-                    Sign in to access your personalized job matches, track applications,
-                    and connect with top employers.
+                    Sign in to access your personalized job matches, track
+                    applications, and connect with top employers.
                   </p>
                 </div>
 
@@ -103,7 +115,9 @@ export default function LoginPage() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">Secure Access</p>
-                      <p className="text-xs text-gray-400">Your data is always protected</p>
+                      <p className="text-xs text-gray-400">
+                        Your data is always protected
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -111,8 +125,12 @@ export default function LoginPage() {
                       <Target size={14} className="text-violet-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold">Personalized Matches</p>
-                      <p className="text-xs text-gray-400">Jobs tailored to your profile</p>
+                      <p className="text-sm font-semibold">
+                        Personalized Matches
+                      </p>
+                      <p className="text-xs text-gray-400">
+                        Jobs tailored to your profile
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -121,7 +139,9 @@ export default function LoginPage() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold">Quick Apply</p>
-                      <p className="text-xs text-gray-400">Apply to jobs in one click</p>
+                      <p className="text-xs text-gray-400">
+                        Apply to jobs in one click
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -172,7 +192,9 @@ export default function LoginPage() {
                   onChange={setEmail}
                   validate={(value) => {
                     if (!value) return "Email is required";
-                    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                    if (
+                      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+                    ) {
                       return "Please enter a valid email address";
                     }
                     return null;
@@ -206,13 +228,19 @@ export default function LoginPage() {
                     <InputGroup.Suffix>
                       <Button
                         isIconOnly
-                        aria-label={isVisible ? "Hide password" : "Show password"}
+                        aria-label={
+                          isVisible ? "Hide password" : "Show password"
+                        }
                         size="sm"
                         variant="ghost"
                         onPress={() => setIsVisible(!isVisible)}
                         className="text-gray-400"
                       >
-                        {isVisible ? <Eye className="size-4" /> : <EyeSlash className="size-4" />}
+                        {isVisible ? (
+                          <Eye className="size-4" />
+                        ) : (
+                          <EyeSlash className="size-4" />
+                        )}
                       </Button>
                     </InputGroup.Suffix>
                   </InputGroup>
@@ -221,7 +249,10 @@ export default function LoginPage() {
 
                 {/* Forgot Password Link */}
                 <div className="flex justify-end">
-                  <Link href="/forgot-password" className="text-xs text-violet-400 hover:text-violet-300 transition">
+                  <Link
+                    href="/forgot-password"
+                    className="text-xs text-violet-400 hover:text-violet-300 transition"
+                  >
                     Forgot password?
                   </Link>
                 </div>
@@ -241,7 +272,9 @@ export default function LoginPage() {
                     <div className="w-full border-t border-white/10"></div>
                   </div>
                   <div className="relative flex justify-center text-xs">
-                    <span className="px-3 bg-transparent text-gray-500">Or continue with</span>
+                    <span className="px-3 bg-transparent text-gray-500">
+                      Or continue with
+                    </span>
                   </div>
                 </div>
 
@@ -258,14 +291,17 @@ export default function LoginPage() {
                     className="p-3 rounded-full border cursor-pointer border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="Sign in with GitHub"
                   >
-                    <FaGithub size={20}  />
+                    <FaGithub size={20} />
                   </button>
                 </div>
 
                 {/* Sign Up Link */}
                 <p className="text-center text-sm text-gray-400 mt-2">
                   Don&apos;t have an account?{" "}
-                  <Link href="/auth/signup" className="text-violet-400 hover:text-violet-300 font-medium">
+                  <Link
+                    href="/auth/signup"
+                    className="text-violet-400 hover:text-violet-300 font-medium"
+                  >
                     Create free account
                   </Link>
                 </p>
