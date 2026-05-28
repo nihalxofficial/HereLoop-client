@@ -30,6 +30,7 @@ import { Eye, EyeSlash } from "@gravity-ui/icons";
 import signupBg from "@/assets/signup.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
 
 export default function SignupPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,9 +42,20 @@ export default function SignupPage() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    const userData = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name as string,
+      email: userData.email as string,
+      password: userData.password as string,
+      image: userData.image as string,
+    });
+    console.log(data, error);
+    if(data){
+      alert("SignUp successful")
+    }
   };
+
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#050816] text-white py-20">
@@ -214,7 +226,7 @@ export default function SignupPage() {
                     <FieldError />
                   </TextField>
 
-                  <TextField name="imageUrl">
+                  <TextField name="image">
                     <Label className="text-sm text-gray-300">
                       <ImageIcon
                         size={14}

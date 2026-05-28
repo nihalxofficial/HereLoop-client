@@ -128,7 +128,7 @@ export default function TermsPage() {
       {/* Glow Effects */}
       <div className="absolute left-0 top-0 h-full w-[35%] bg-[radial-gradient(circle_at_left,rgba(168,85,247,0.08),transparent_70%)] pointer-events-none" />
       <div className="absolute right-0 top-0 h-full w-[35%] bg-[radial-gradient(circle_at_right,rgba(168,85,247,0.08),transparent_70%)] pointer-events-none" />
-      <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/10 blur-3xl pointer-events-none" />
+      <div className="absolute left-1/2 top-1/2 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/10 blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-5xl px-4 md:px-6 lg:px-8">
         {/* Header Section */}
@@ -166,7 +166,7 @@ export default function TermsPage() {
           {/* Introduction */}
           <div className="mb-8 pb-6 border-b border-white/10">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-violet-600/20 border border-white/10">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-fuchsia-500/20 to-violet-600/20 border border-white/10">
                 <Scale size={18} className="text-violet-400" />
               </div>
               <div>
@@ -189,7 +189,7 @@ export default function TermsPage() {
             {sections.map((section, index) => (
               <div key={index} className="group">
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-fuchsia-500/20 to-violet-600/20 border border-white/10">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-fuchsia-500/20 to-violet-600/20 border border-white/10">
                     {section.icon}
                   </div>
                   <h3 className="text-lg font-semibold text-white">
@@ -222,7 +222,7 @@ export default function TermsPage() {
           {/* Governing Law Section */}
           <div className="mt-8 pt-6 border-t border-white/10">
             <div className="flex items-start gap-3 mb-4">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-fuchsia-500/20 to-violet-600/20 border border-white/10">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-fuchsia-500/20 to-violet-600/20 border border-white/10">
                 <Globe size={16} className="text-violet-400" />
               </div>
               <h4 className="text-base font-semibold">Governing Law</h4>
